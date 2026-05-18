@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bistro Koliba — Balkan Grill Mainburg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fire: #ff4500;
+  --ember: #ff8c00;
+  --dark: #080808;
+  --dark2: #0d0d0d;
+  --dark3: #141414;
+  --border: #1c1c1c;
+  --text: #e8e8e8;
+  --muted: #666;
+  --dim: #2e2e2e;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--fire);border-radius:2px;}
+.eyebrow{font-size:.62rem;font-weight:500;letter-spacing:.38em;text-transform:uppercase;color:var(--fire);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.12s;} .rd2{transition-delay:.24s;} .rd3{transition-delay:.36s;} .rd4{transition-delay:.48s;}
+
+/* ── NAV ─────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:70px;background:transparent;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--border);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:48px;width:auto;display:block;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--fire);color:#fff;border:none;padding:10px 22px;font-family:'Inter',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .2s;}
+.nav-cta:hover{background:var(--ember);transform:translateY(-1px);}
+
+/* ── HERO ────────────────────────── */
+#hero{position:relative;width:100%;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(255,69,0,.18) 0%,transparent 60%),linear-gradient(180deg,rgba(8,8,8,.2) 0%,rgba(8,8,8,.45) 55%,rgba(8,8,8,.88) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;animation:hFade 1.4s ease both;}
+@keyframes hFade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--fire);font-weight:500;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:36px;height:1px;background:var(--fire);opacity:.55;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:900;line-height:.95;color:#fff;}
+.hero-title .fw{color:var(--fire);display:block;font-style:italic;}
+.hero-tagline{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:18px 0 38px;font-weight:300;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-p{background:var(--fire);color:#fff;border:none;padding:15px 34px;font-family:'Inter',sans-serif;font-size:.63rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .2s,box-shadow .3s;text-decoration:none;display:inline-block;}
+.btn-p:hover{background:var(--ember);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,69,0,.35);}
+.btn-g{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25);padding:15px 34px;font-family:'Inter',sans-serif;font-size:.63rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,transform .2s;text-decoration:none;display:inline-block;}
+.btn-g:hover{border-color:rgba(255,255,255,.6);color:#fff;transform:translateY(-2px);}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.28);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;animation:sb 2s ease-in-out infinite;}
+.scroll-line{width:1px;height:38px;background:linear-gradient(180deg,rgba(255,69,0,.8),transparent);animation:sl 2s ease-in-out infinite;}
+@keyframes sb{0%,100%{opacity:.4;transform:translateX(-50%) translateY(0)}50%{opacity:.8;transform:translateX(-50%) translateY(5px)}}
+@keyframes sl{0%,100%{transform:scaleY(1);opacity:.6}50%{transform:scaleY(.6);opacity:1}}
+
+/* ── STATS ───────────────────────── */
+#stats{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 48px;display:flex;justify-content:center;}
+.stat-item{flex:1;max-width:180px;text-align:center;padding:0 28px;position:relative;}
+.stat-item+.stat-item::before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;background:var(--border);}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--fire);line-height:1;margin-bottom:5px;}
+.stat-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:500;}
+
+/* ── ABOUT ───────────────────────── */
+#about{background:var(--dark);border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+.about-text-side{padding:96px 72px 96px 72px;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.about-text-side::before{content:'';display:block;width:1px;height:48px;background:linear-gradient(180deg,var(--fire),transparent);margin-bottom:24px;}
+.about-quote{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:700;line-height:1.2;color:#fff;margin:12px 0 22px;}
+.about-quote em{color:var(--fire);font-style:italic;display:block;}
+.about-body{font-size:.88rem;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:18px;}
+.about-signature{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.35);font-size:1.05rem;margin-top:26px;border-top:1px solid var(--border);padding-top:18px;}
+.about-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px;}
+.tag{border:1px solid var(--border);color:var(--muted);padding:5px 13px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:border-color .3s,color .3s;cursor:default;}
+.tag:hover{border-color:var(--fire);color:var(--fire);}
+.about-photo-side{position:relative;overflow:hidden;}
+.about-photo-side img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9);}
+.about-photo-side::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 0%,transparent 35%);z-index:1;pointer-events:none;}
+@media(max-width:900px){
+  #about{grid-template-columns:1fr;}
+  .about-photo-side{height:320px;}
+  .about-text-side{padding:64px 28px;}
+  .about-text-side::before{margin-left:0;}
+}
+
+/* ── GALLERY ─────────────────────── */
+#gallery{background:var(--dark);padding:90px 48px;border-top:1px solid var(--border);}
+.gallery-header{text-align:center;margin-bottom:40px;}
+.gallery-header .eyebrow{display:block;margin-bottom:12px;}
+.gallery-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:#fff;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:1100px;margin:0 auto;}
+.gallery-cell{overflow:hidden;aspect-ratio:1/1;position:relative;}
+.gallery-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85);transition:filter .5s,transform .5s;}
+.gallery-cell:hover img{filter:brightness(.95) saturate(1.1);transform:scale(1.06);}
+.gallery-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(8,8,8,.7));pointer-events:none;}
+
+/* ── MENU ────────────────────────── */
+#menu{background:var(--dark2);padding:90px 0 100px;border-top:1px solid var(--border);scroll-margin-top:70px;}
+.menu-header{text-align:center;margin-bottom:48px;padding:0 24px;}
+.menu-header .eyebrow{display:block;margin-bottom:12px;}
+.menu-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.menu-header p{color:var(--muted);font-size:.83rem;font-weight:300;}
+
+/* ── Category nav ── */
+.menu-cat-nav{display:flex;gap:0;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:0;padding:0 24px;position:sticky;top:70px;z-index:50;background:var(--dark2);}
+.mcat{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:12px 22px;font-family:'Inter',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:color .3s,border-color .3s;white-space:nowrap;margin-bottom:-1px;}
+.mcat:hover{color:rgba(255,255,255,.7);}
+.mcat.active{color:var(--fire);border-bottom-color:var(--fire);}
+
+/* ── Panels ── */
+.menu-panels{max-width:1140px;margin:0 auto;padding:52px 32px 0;}
+.mpanel{display:none;}
+.mpanel.active{display:block;}
+
+/* ── Section heading inside panel ── */
+.msection-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.msection-title::before{content:'';display:block;width:3px;height:20px;background:var(--fire);border-radius:2px;flex-shrink:0;}
+
+/* ── Dish list (replaces card grid) ── */
+.dish-grid{display:block;margin-bottom:40px;}
+.dish-card{background:none;border:none;border-bottom:1px solid rgba(255,255,255,.05);position:relative;}
+.dish-card:last-child{border-bottom:none;}
+.dish-img-wrap{display:none;}
+.dish-body{padding:0;}
+.dish-body h3{display:none;}
+.dish-footer{display:none;}
+/* New clean row layout */
+.dli-row{display:flex;align-items:baseline;gap:12px;padding:13px 0;cursor:default;}
+.dli-num{font-size:.7rem;color:var(--fire);font-weight:700;min-width:20px;flex-shrink:0;font-family:'Inter',sans-serif;}
+.dli-name{font-family:'Inter',sans-serif;font-size:.88rem;font-weight:500;color:rgba(255,255,255,.88);line-height:1.3;transition:color .2s;}
+.dli-name sup{font-size:.55rem;color:var(--dim);font-weight:400;}
+.dli-dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.07);min-width:24px;margin-bottom:3px;}
+.dli-price{font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;color:var(--fire);white-space:nowrap;}
+.dli-badge{font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--ember);border:1px solid rgba(255,140,0,.25);padding:2px 6px;white-space:nowrap;flex-shrink:0;}
+.dish-card:hover .dli-name{color:#fff;}
+/* Ingredients — slide open below row on hover */
+.dish-ingredients{display:grid;grid-template-rows:0fr;transition:grid-template-rows .24s ease;}
+.dish-card:hover .dish-ingredients{grid-template-rows:1fr;}
+.dish-ingredients > div{overflow:hidden;}
+.di-inner{padding:0 0 12px 32px;}
+.di-label{font-size:.47rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fire);font-weight:600;margin-bottom:5px;}
+.di-text{font-size:.72rem;color:#999;line-height:1.55;font-weight:300;}
+
+/* ── Text menu list (legacy — kept for any remnant markup) ── */
+.menu-list{display:block;margin-bottom:40px;}
+.menu-list-1col{display:block;}
+.menu-item{display:none;}
+.dli-vol{font-size:.68rem;color:var(--dim);font-weight:400;margin-left:5px;}
+
+/* ── Drinks sub-tabs ── */
+.drinks-subtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:32px;}
+.dstab{background:var(--dark3);border:1px solid var(--border);color:var(--muted);padding:6px 14px;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s;}
+.dstab.active{background:var(--fire);border-color:var(--fire);color:#fff;}
+.dspanel{display:none;}
+.dspanel.active{display:block;}
+
+/* allergen note */
+.allergen-note{background:var(--dark3);border:1px solid var(--border);border-left:3px solid var(--fire);padding:20px 24px;margin-top:48px;font-size:.72rem;color:var(--muted);line-height:1.7;}
+.allergen-note strong{color:rgba(255,255,255,.5);display:block;margin-bottom:6px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;}
+
+/* ── RESERVATION ─────────────────── */
+#reservation{position:relative;overflow:hidden;padding:110px 48px;text-align:center;background:var(--dark);border-top:1px solid var(--border);}
+.res-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(255,69,0,.12) 0%,transparent 70%);pointer-events:none;animation:rp 4s ease-in-out infinite;}
+@keyframes rp{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+#reservation h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:10px;position:relative;}
+#reservation .sub{color:var(--muted);font-size:.88rem;font-weight:300;margin-bottom:38px;position:relative;}
+.res-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+
+/* ── INFO ────────────────────────── */
+#info-wrap{background:var(--dark2);border-top:1px solid var(--border);}
+#info{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;}
+.info-left{padding:64px 56px;border-right:1px solid var(--border);}
+.info-right{padding:64px 56px;}
+.info-eyebrow{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--fire);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.info-eyebrow::before{content:'';width:22px;height:1px;background:var(--fire);}
+.hours-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.hours-row:last-child{border-bottom:none;}
+.hours-row .hr-day{font-size:.82rem;color:var(--muted);font-weight:300;}
+.hours-row .hr-time{font-size:.85rem;color:var(--text);font-family:'Playfair Display',serif;}
+.hours-row .hr-closed{font-size:.75rem;color:#fff;font-family:'Playfair Display',serif;}
+.map-wrap{position:relative;height:200px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px;}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block;filter:invert(90%) hue-rotate(180deg) saturate(0.5) brightness(0.85);}
+.contact-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.cchip{display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--muted);padding:7px 12px;border:1px solid var(--border);transition:border-color .25s,color .25s;}
+.cchip:hover{border-color:var(--fire);color:var(--text);}
+.cchip .cc-ico{color:var(--fire);font-size:.82rem;}
+.cchip a{color:inherit;text-decoration:none;}
+
+/* ── FOOTER ──────────────────────── */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.25);}
+.footer-logo span{color:var(--fire);}
+.footer-copy{color:var(--dim);font-size:.62rem;letter-spacing:.1em;}
+.footer-links{display:flex;gap:22px;list-style:none;}
+.footer-links a{color:var(--dim);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
+.footer-links a:hover{color:var(--muted);}
+
+/* ── RESPONSIVE ──────────────────── */
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .nav-links{display:none;}
+  #about{padding:64px 24px;}
+  #info{grid-template-columns:1fr;}
+  .info-left{border-right:none;border-bottom:1px solid var(--border);padding:48px 28px;}
+  .info-right{padding:48px 28px;}
+  .about-text-side{text-align:center;}
+  #info{grid-template-columns:1fr;gap:40px;padding:56px 24px;}
+  #menu{padding:64px 0 80px;}
+  .menu-panels{padding:40px 20px 0;}
+  .menu-list{grid-template-columns:1fr;}
+  #reservation{padding:80px 24px;}
+  footer{padding:20px 24px;flex-direction:column;text-align:center;}
+  #stats{padding:24px;flex-wrap:wrap;}
+}
+@media(max-width:600px){
+  .hero-title{font-size:3rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-p,.btn-g{width:250px;text-align:center;}
+  .dish-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:500px){
+  .dish-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="images/logo.png" alt="Bistro Koliba"></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Speisekarte</a></li>
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#info">Öffnungszeiten</a></li>
+    <li><a href="#reservation">Kontakt</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reservieren</button>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════ -->
+<section id="hero">
+  <video class="hero-video" src="heropage.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mainburg · Balkan Grill · Seit 2018</div>
+    <h1 class="hero-title">BISTRO<span class="fw">KOLIBA</span></h1>
+    <p class="hero-tagline">Echter Geschmack &nbsp;·&nbsp; Echtes Feuer &nbsp;·&nbsp; Echte Gastfreundschaft</p>
+    <div class="hero-btns">
+      <a href="#reservation" class="btn-p">Tisch reservieren</a>
+      <a href="#menu" class="btn-g">Speisekarte</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+</section>
+
+<!-- ═══ STATS ═══════════════════════════════════════════════════ -->
+<section id="stats">
+  <div class="stat-item reveal"><div class="stat-num">7+</div><div class="stat-label">Jahre Erfahrung</div></div>
+  <div class="stat-item reveal rd1"><div class="stat-num">40+</div><div class="stat-label">Gerichte</div></div>
+  <div class="stat-item reveal rd2"><div class="stat-num">100%</div><div class="stat-label">Hausgemacht</div></div>
+  <div class="stat-item reveal rd3"><div class="stat-num">5★</div><div class="stat-label">Bewertungen</div></div>
+</section>
+
+<!-- ═══ ABOUT ════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="about-text-side">
+    <span class="eyebrow reveal">Unsere Geschichte</span>
+    <h2 class="about-quote reveal rd1">
+      Vom Balkan<br>
+      <em>nach Bayern.</em>
+    </h2>
+    <p class="about-body reveal rd2">
+      Im Herzen von Mainburg bringen wir die authentischen Aromen des Balkans auf Ihren Teller. Seit 2018 bereiten wir täglich frische Gerichte nach überlieferten Familienrezepten zu — mit Zutaten, die wir kennen, und Leidenschaft, die man schmeckt.
+    </p>
+    <p class="about-body reveal rd2">
+      Vom zarten Ćevapčići im selbst gebackenen Lepina bis zur großen Kolibaplatte für die ganze Familie — bei uns sitzt jeder am richtigen Tisch. Alle Teigwaren und Beilagen werden von uns selbst hergestellt.
+    </p>
+    <div class="about-tags reveal rd3">
+      <span class="tag">Hausgemacht</span>
+      <span class="tag">Balkan Spezialitäten</span>
+      <span class="tag">Familiär</span>
+      <span class="tag">Holzkohlegrill</span>
+      <span class="tag">Frische Zutaten</span>
+      <span class="tag">Eigene Rezeptur</span>
+    </div>
+    <div class="about-signature reveal rd4">— Familie Koliba, Mainburg</div>
+  </div>
+  <div class="about-photo-side reveal rd1">
+    <img src="images/slika3.jpg" alt="Bistro Koliba — gedeckter Tisch">
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══════════════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="gallery-header">
+    <span class="eyebrow reveal">— Impressionen —</span>
+    <h2 class="reveal rd1">Unsere Gerichte</h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-cell"><img src="images/slika1.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika2.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika3.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika4.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika5.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika6.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika7.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika8.jpg" alt="Bistro Koliba"></div>
+    <div class="gallery-cell"><img src="images/slika9.jpg" alt="Bistro Koliba"></div>
+  </div>
+</section>
+
+<!-- ═══ MENU ═════════════════════════════════════════════════════ -->
+<section id="menu">
+  <div class="menu-header">
+    <span class="eyebrow reveal">— Speisekarte —</span>
+    <h2 class="reveal rd1">Unsere Gerichte & Getränke</h2>
+    <p class="reveal rd2">Hausgemacht, frisch, vom Grill. Täglich zubereitet.</p>
+  </div>
+
+  <nav class="menu-cat-nav reveal">
+    <button class="mcat active" data-tab="rind">Rind</button>
+    <button class="mcat" data-tab="schwein">Schwein</button>
+    <button class="mcat" data-tab="haehnchen">Hähnchen</button>
+    <button class="mcat" data-tab="fisch">Fisch</button>
+    <button class="mcat" data-tab="grillteller">Grillteller</button>
+    <button class="mcat" data-tab="grillplatte">Grillplatte</button>
+    <button class="mcat" data-tab="kinder">Kinder</button>
+    <button class="mcat" data-tab="salate">Salate</button>
+    <button class="mcat" data-tab="beilagen">Beilagen</button>
+    <button class="mcat" data-tab="nachtisch">Nachtisch</button>
+    <button class="mcat" data-tab="getraenke">Getränke</button>
+  </nav>
+
+  <div class="menu-panels">
+
+    <!-- ── RIND ── -->
+    <div class="mpanel active" id="tab-rind">
+      <h3 class="msection-title">Gerichte vom Rind</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Ćevapčići <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span><span class="dli-badge">Klassiker</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch nach eigener Rezeptur · hausgemachtes Lepina · Zwiebel · Sauerrahm</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gefüllte Pljeskavica „Gurmanska" <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 17,90</span><span class="dli-badge">Beliebt</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischtes Hackfleisch · Käsefüllung · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Hamburger Klassik mit Pommes <sup>1,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 12,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Brioche-Bun · Salat · Tomate · Zwiebel · Ketchup · Pommes</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Cheeseburger mit Pommes <sup>1,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,50</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Cheddar · Brioche-Bun · Salat · Tomate · Zwiebel · Pommes</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Chillyburger mit Bacon, Käse und Pommes <sup>1,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Bacon · Cheddar · Chili · Jalapeños · Brioche-Bun · Pommes</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCHWEIN ── -->
+    <div class="mpanel" id="tab-schwein">
+      <h3 class="msection-title">Gerichte vom Schwein</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Pljeskavica „Gurmanska" <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 17,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischtes Hackfleisch · Käse · Schinken · Peka Kartoffeln · Reis</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gegrillter Halsgrat <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinenacken vom Holzkohlegrill · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Fleischspieß vom Grill <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinefleisch vom Spieß · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Teufelsschnitzel (leicht scharf) <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweineschnitzel · Gemüsesoße (leicht scharf) · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Panierte Schweinelende <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinelende · Käse · Schinken · Peka Kartoffeln · Tartar Dipp</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Gerollte Schweinelende vom Grill <span class="dli-badge">NEU</span> <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 19,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinelende · Bacon · Käse · Peka Kartoffeln · Salat</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HÄHNCHEN ── -->
+    <div class="mpanel" id="tab-haehnchen">
+      <h3 class="msection-title">Gerichte vom Hähnchenfleisch</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Gegrillte Hähnchenkeule ohne Knochen <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenkeule vom Holzkohlegrill · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gerollter Hähnchenspieß <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span><span class="dli-badge">Beliebt</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenfleisch · Speck · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Hähnchenbrustfilet in Knoblauchsauce <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenbrustfilet · hausgemachte Knoblauchsauce · Duvečreis</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Gegrilltes Hähnchenbrustfilet <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenbrustfilet · gegrilltes Saisongemüse · Peka Kartoffeln</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FISCH ── -->
+    <div class="mpanel" id="tab-fisch">
+      <h3 class="msection-title">Fisch</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Zanderfilet mit Kartoffelsalat + Fladenbrot <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 19,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Zanderfilet · Kartoffelsalat · hausgemachtes Fladenbrot</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Wallerfilet mit Kartoffelsalat <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Wallerfilet · Kartoffelsalat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Tintenfisch vom Grill mit Salzkartoffeln und Spinat</span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Tintenfisch vom Holzkohlegrill · Salzkartoffeln · Spinat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Fischteller für 1 Person <sup>1,3,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 31,00</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Lachs · Zander · Tintenfische · Garnelen · hausgemachtes Fladenbrot</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Fischteller für 2 Personen <sup>1,3,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 62,00</span><span class="dli-badge">Für 2 Pers.</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Lachs · Zander · Tintenfische · Garnelen · hausgemachtes Fladenbrot</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Vegetarischer Kolibateller</span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gegrilltes Saisongemüse · Duvečreis · Peka Kartoffeln · Salat</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GRILLTELLER ── -->
+    <div class="mpanel" id="tab-grillteller">
+      <h3 class="msection-title">Grillteller</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Mixteller <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">3 Ćevapčići · Halsgrat · Hähnchenkeule · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Bauernteller <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">3 Ćevapčići · Fleischspießchen · gegrilltes Würstchen · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Kolibateller <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 20,40</span><span class="dli-badge">Chef's Pick</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">2 Ćevapčići · Hähnchenspieß · Pljeskavica „Gurmanska" · Hähnchenkeule · Peka Kartoffeln · Reis · Salat</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GRILLPLATTE ── -->
+    <div class="mpanel" id="tab-grillplatte">
+      <h3 class="msection-title">Grillplatte</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kolibaplatte für 2 Personen <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 40,00</span><span class="dli-badge">Für 2 Pers.</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">4 Ćevapčići · 2 Halsgrat · 2 Würstchen · 2 Pljeskavica · 2 Hähnchenspieße · Kartoffeln · Reis · Salat · Fladenbrot</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kolibaplatte für 3 Personen <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 60,00</span><span class="dli-badge">Für 3 Pers.</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">6 Ćevapčići · 3 Halsgrat · 3 Würstchen · 3 Pljeskavica · 3 Hähnchenspieße · Kartoffeln · Reis · Salat · Fladenbrot</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── KINDER ── -->
+    <div class="mpanel" id="tab-kinder">
+      <h3 class="msection-title">Für unsere kleinen Gäste</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kinder Ćevapčići <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 7,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch nach eigener Rezeptur · Lepina · Ajvar</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kinder Pljeskavica <sup>1,3,6,7,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hackfleisch · Peka Kartoffeln · Ajvar</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Fleischspießchen <sup>1,3,7,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinefleisch vom Spieß · Peka Kartoffeln · Ajvar</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SALATE ── -->
+    <div class="mpanel" id="tab-salate">
+      <h3 class="msection-title">Salat</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kleiner gemischter Salat</span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischte Salatblätter · Tomaten · Gurke · Zwiebel · Dressing</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Großer Salat mit Hähnchenstreifen <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischter Salat · gegrillte Hähnchenstreifen · Tomaten · Gurke · Dressing</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Thunfisch Salat <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Thunfisch · Oliven · Schafskäse · gemischte Salatblätter</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">„Šopska" Salat <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 7,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Tomaten · Paprika · Gurke · Zwiebel · Kuhkäse</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BEILAGEN ── -->
+    <div class="mpanel" id="tab-beilagen">
+      <h3 class="msection-title">Beilagen</h3>
+      <div class="dish-grid">
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Peka Kartoffeln</span><span class="dli-dots"></span><span class="dli-price">€ 4,00</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Pommes</span><span class="dli-dots"></span><span class="dli-price">€ 3,50</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Gegrilltes Gemüse</span><span class="dli-dots"></span><span class="dli-price">€ 4,90</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Portion Ajvar</span><span class="dli-dots"></span><span class="dli-price">€ 1,00</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Portion Sauerrahm <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 1,00</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Extra Brot <sup>1,6,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,00</span></div></div>
+        <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Duvec Reis</span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── NACHTISCH ── -->
+    <div class="mpanel" id="tab-nachtisch">
+      <h3 class="msection-title">Nachtisch</h3>
+      <div class="dish-grid">
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">2 Pfannkuchen mit Nutella und Vanilleeis <sup>1,6,9,14</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hausgemachte Pfannkuchen · Nutella · Vanilleeis</div></div></div></div>
+        </div>
+        <div class="dish-card">
+          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kugel Eis <sup>6,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 1,90</span></div>
+          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Vanille · Schoko · Erdbeere</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GETRÄNKE ── -->
+    <div class="mpanel" id="tab-getraenke">
+      <h3 class="msection-title">Getränkekarte</h3>
+
+      <!-- Sub-tabs -->
+      <div class="drinks-subtabs">
+        <button class="dstab active" data-ds="biere">Biere</button>
+        <button class="dstab" data-ds="soft">Soft Drinks</button>
+        <button class="dstab" data-ds="saefte">Säfte</button>
+        <button class="dstab" data-ds="schorlen">Schorlen</button>
+        <button class="dstab" data-ds="weisswein">Weißwein</button>
+        <button class="dstab" data-ds="rotwein">Rotwein</button>
+        <button class="dstab" data-ds="cocktails">Cocktails</button>
+        <button class="dstab" data-ds="spirituosen">Spirituosen</button>
+        <button class="dstab" data-ds="kaffee">Heiße Getränke</button>
+      </div>
+
+      <!-- Biere -->
+      <div class="dspanel active" id="ds-biere">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Biere aus Weihenstephan</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Hefeweißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Leichtes Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Alkoholfreies Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Dunkles Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Original Helles <sup>2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,70</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Original Radler <sup>2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Pils <sup>2</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
+        </div>
+      </div>
+
+      <!-- Soft Drinks -->
+      <div class="dspanel" id="ds-soft">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Soft Getränke</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Coca Cola <sup>8,10,13</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Coca Cola <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Cola Zero <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Cola Light <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Cockta <sup>8,11,13</sup><span class="dli-vol">0,275 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Fanta <sup>8,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Sprite <sup>11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">8</span><span class="dli-name">Zitronenlimonade <sup>11,13</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,10</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">9</span><span class="dli-name">Mezzo Mix <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">10</span><span class="dli-name">Lift <sup>11,12,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">11</span><span class="dli-name">Wasser Apollinaris<span class="dli-vol">0,25 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">12</span><span class="dli-name">Wasser Apollinaris<span class="dli-vol">0,75 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">13</span><span class="dli-name">Wasser Vio<span class="dli-vol">0,25 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">14</span><span class="dli-name">Wasser Vio<span class="dli-vol">0,75 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,80</span></div></div>
+        </div>
+      </div>
+
+      <!-- Säfte -->
+      <div class="dspanel" id="ds-saefte">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Säfte</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Orangensaft <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Maracujanektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Johannisbeernektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Erdbeernektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
+        </div>
+      </div>
+
+      <!-- Schorlen -->
+      <div class="dspanel" id="ds-schorlen">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Schorlen</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Maracujaschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Orangensaftschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Johannisbeerschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
+        </div>
+      </div>
+
+      <!-- Weißwein -->
+      <div class="dspanel" id="ds-weisswein">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Weißwein</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 9,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 28,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
+        </div>
+      </div>
+
+      <!-- Rotwein -->
+      <div class="dspanel" id="ds-rotwein">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Rotwein</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 9,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 28,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Weinschorle<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,80</span></div></div>
+        </div>
+      </div>
+
+      <!-- Cocktails -->
+      <div class="dspanel" id="ds-cocktails">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Cocktails</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Aperol Spritz<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,90</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Hugo<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,50</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Lillet<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
+        </div>
+      </div>
+
+      <!-- Spirituosen -->
+      <div class="dspanel" id="ds-spirituosen">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Spirituosen</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kruškovac<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,50</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Sljivovica<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,50</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Jägermeister<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Whisky Jack Daniels<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div></div>
+        </div>
+      </div>
+
+      <!-- Heiße Getränke -->
+      <div class="dspanel" id="ds-kaffee">
+        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Heiße Getränke</h4>
+        <div class="dish-grid">
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Franck Espresso <sup>10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,40</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Franck Espresso Macchiato <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Kaffee <sup>10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Milchkaffee <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Cappuccino <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
+          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Tee versch. Sorten</span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
+        </div>
+      </div>
+
+    </div><!-- /getränke -->
+
+    <!-- Allergen note for food panels -->
+    <div id="allergen-food" class="allergen-note" style="margin-top:32px;">
+      <strong>Hinweis auf Zusatzstoffe</strong>
+      1 Weizenmehl · 2 Gerste · 3 Geschmacksverstärker · 4 Schwefelsäure und Sulfite · 5 Sellerie · 6 Milch · 7 Sesamsamen · 8 Farbstoff · 9 Eier · 10 Koffeinhaltig · 11 Süßmittel · 12 Phenylalaninquelle · 13 Konservierungsstoffe · 14 Schalenobst (Nüsse)
+    </div>
+
+  </div><!-- /menu-panels -->
+</section>
+
+<!-- ═══ RESERVATION ══════════════════════════════════════════════ -->
+<section id="reservation">
+  <div class="res-glow"></div>
+  <span class="eyebrow reveal" style="display:block;margin-bottom:14px;">Kontakt</span>
+  <h2 class="reveal rd1">Tisch reservieren</h2>
+  <p class="sub reveal rd2">Rufen Sie uns an oder schreiben Sie uns — wir freuen uns auf Sie.</p>
+  <div class="res-btns reveal rd3">
+    <a href="tel:+4987518464468" class="btn-p">📞 &nbsp;+49 8751 8464468</a>
+    <a href="mailto:info@bistrokoliba.de" class="btn-g">✉ &nbsp;info@bistrokoliba.de</a>
+  </div>
+</section>
+
+<!-- ═══ INFO ══════════════════════════════════════════════════════ -->
+<div id="info-wrap">
+<div id="info">
+
+  <!-- Left: hours -->
+  <div class="info-left reveal">
+    <div class="info-eyebrow">Öffnungszeiten</div>
+    <div class="hours-row"><span class="hr-day">Montag</span><span class="hr-closed">Ruhetag</span></div>
+    <div class="hours-row"><span class="hr-day">Dienstag – Mittwoch</span><span class="hr-time">17:00 – 23:00</span></div>
+    <div class="hours-row"><span class="hr-day">Donnerstag – Samstag</span><span class="hr-time">11–14 &amp; 17–23</span></div>
+    <div class="hours-row"><span class="hr-day">Sonntag</span><span class="hr-time">11:00 – 23:00</span></div>
+  </div>
+
+  <!-- Right: map + contact chips -->
+  <div class="info-right reveal rd1">
+    <div class="info-eyebrow">Anfahrt &amp; Kontakt</div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=K%C3%B6glm%C3%BChle+5a,+84048+Mainburg,+Germany&output=embed&z=16"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="contact-chips">
+      <div class="cchip"><span class="cc-ico">📍</span> Köglmühle 5a, 84048 Mainburg</div>
+      <div class="cchip"><span class="cc-ico">📞</span><a href="tel:+4987518464468">+49 8751 8464468</a></div>
+      <div class="cchip"><span class="cc-ico">✉</span><a href="mailto:info@bistrokoliba.de">info@bistrokoliba.de</a></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">BISTRO <span>KOLIBA</span></div>
+  <div class="footer-copy">© 2025 Bistro Koliba · Mainburg</div>
+  <ul class="footer-links">
+    <li><a href="#">Impressum</a></li>
+    <li><a href="#">Datenschutz</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
+</footer>
+
+<script>
+/* Nav scroll */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+/* Reveal */
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* Main menu tabs */
+document.querySelectorAll('.mcat').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.mcat').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mpanel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById('tab-' + tab.dataset.tab);
+    if(panel) panel.classList.add('active');
+    const foodAllergen = document.getElementById('allergen-food');
+    foodAllergen.style.display = tab.dataset.tab === 'getraenke' ? 'none' : 'block';
+  });
+});
+
+/* Drinks sub-tabs */
+document.querySelectorAll('.dstab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.dstab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.dspanel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById('ds-' + tab.dataset.ds);
+    if(panel) panel.classList.add('active');
+  });
+});
+
+/* Hide food allergen note initially only if drinks tab active */
+document.getElementById('allergen-food').style.display = 'block';
+</script>
+</body>
+</html>

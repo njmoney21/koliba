@@ -83,12 +83,6 @@ nav.scrolled{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);-webkit-backd
 .about-photo-side{position:relative;overflow:hidden;}
 .about-photo-side img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9);}
 .about-photo-side::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 0%,transparent 35%);z-index:1;pointer-events:none;}
-@media(max-width:900px){
-  #about{grid-template-columns:1fr;}
-  .about-photo-side{height:320px;}
-  .about-text-side{padding:64px 28px;}
-  .about-text-side::before{margin-left:0;}
-}
 
 /* ── GALLERY ─────────────────────── */
 #gallery{background:var(--dark);padding:90px 48px;border-top:1px solid var(--border);}
@@ -203,30 +197,133 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
 .footer-links a:hover{color:var(--muted);}
 
 /* ── RESPONSIVE ──────────────────── */
+
+/* Hamburger (hidden on desktop) */
+.nav-ham{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;padding:8px;cursor:pointer;z-index:102;flex-shrink:0;}
+.nav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;transition:transform .3s,opacity .3s;}
+.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── Tablet ≤ 900px ── */
 @media(max-width:900px){
-  nav{padding:0 24px;}
+  nav{padding:0 20px;}
   .nav-links{display:none;}
-  #about{padding:64px 24px;}
+  .nav-logo img{height:40px;}
+
+  #stats{padding:20px 24px;flex-wrap:wrap;gap:0;}
+  .stat-item{min-width:120px;}
+
+  #about{grid-template-columns:1fr;}
+  .about-photo-side{height:300px;}
+  .about-text-side{padding:56px 32px;}
+  .about-text-side::before{margin-left:0;}
+
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  #gallery{padding:60px 24px;}
+
+  #menu{padding:56px 0 72px;}
+  .menu-header{padding:0 20px;margin-bottom:32px;}
+  .menu-cat-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;padding:0 16px;}
+  .menu-cat-nav::-webkit-scrollbar{display:none;}
+  .mcat{padding:12px 14px;font-size:.58rem;white-space:nowrap;}
+  .menu-panels{padding:28px 16px 0;}
+
   #info{grid-template-columns:1fr;}
-  .info-left{border-right:none;border-bottom:1px solid var(--border);padding:48px 28px;}
-  .info-right{padding:48px 28px;}
-  .about-text-side{text-align:center;}
-  #info{grid-template-columns:1fr;gap:40px;padding:56px 24px;}
-  #menu{padding:64px 0 80px;}
-  .menu-panels{padding:40px 20px 0;}
-  .menu-list{grid-template-columns:1fr;}
-  #reservation{padding:80px 24px;}
+  .info-left{border-right:none;border-bottom:1px solid var(--border);padding:44px 28px;}
+  .info-right{padding:44px 28px;}
+
+  #reservation{padding:72px 24px;}
   footer{padding:20px 24px;flex-direction:column;text-align:center;}
-  #stats{padding:24px;flex-wrap:wrap;}
+  .footer-links{justify-content:center;}
 }
+
+/* ── Mobile ≤ 600px ── */
 @media(max-width:600px){
-  .hero-title{font-size:3rem;}
-  .hero-btns{flex-direction:column;align-items:center;}
-  .btn-p,.btn-g{width:250px;text-align:center;}
-  .dish-grid{grid-template-columns:1fr 1fr;}
+  /* Hamburger nav */
+  .nav-cta{display:none;}
+  .nav-ham{display:flex;}
+  .nav-links{
+    display:flex!important;
+    flex-direction:column;
+    position:fixed;
+    top:70px;left:0;right:0;
+    background:rgba(8,8,8,.97);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    padding:8px 0 20px;
+    border-bottom:1px solid var(--border);
+    gap:0;
+    transform:translateY(-110%);
+    transition:transform .3s cubic-bezier(.4,0,.2,1);
+    z-index:99;
+    pointer-events:none;
+  }
+  .nav-links.open{transform:translateY(0);pointer-events:auto;}
+  .nav-links li a{display:block;padding:15px 24px;border-bottom:1px solid rgba(255,255,255,.05);font-size:.78rem;letter-spacing:.18em;color:rgba(255,255,255,.7);}
+  .nav-links li:last-child a{border-bottom:none;}
+
+  /* Hero */
+  .hero-title{font-size:2.6rem;}
+  .hero-tagline{font-size:.62rem;margin:14px 0 28px;letter-spacing:.18em;}
+  .hero-btns{flex-direction:column;align-items:center;gap:10px;}
+  .btn-p,.btn-g{width:220px;text-align:center;padding:14px 0;}
+  .hero-eyebrow{font-size:.55rem;letter-spacing:.3em;}
+
+  /* Stats → 2×2 grid */
+  #stats{display:grid;grid-template-columns:1fr 1fr;padding:0;}
+  .stat-item{max-width:none;padding:20px 12px;border:1px solid var(--border);}
+  .stat-item+.stat-item::before{display:none;}
+  .stat-num{font-size:1.9rem;}
+
+  /* About */
+  .about-text-side{padding:44px 20px;}
+  .about-quote{font-size:1.5rem;}
+  .about-photo-side{height:240px;}
+  .about-tags{gap:5px;}
+  .tag{font-size:.5rem;padding:4px 9px;}
+
+  /* Gallery */
+  #gallery{padding:48px 12px;}
+
+  /* Menu */
+  .menu-header h2{font-size:1.6rem;}
+  .msection-title{font-size:1rem;margin-bottom:16px;}
+  .dli-dots{display:none;}
+  .dli-name{flex:1;min-width:0;}
+  .dli-price{font-size:.85rem;}
+  .dli-badge{display:none;}
+  .drinks-subtabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}
+  .drinks-subtabs::-webkit-scrollbar{display:none;}
+  .dstab{white-space:nowrap;font-size:.52rem;padding:6px 10px;}
+  .dli-row{gap:8px;padding:12px 0;}
+
+  /* Info */
+  .info-left{padding:36px 20px;}
+  .info-right{padding:36px 20px;}
+  .map-wrap{height:200px;}
+  .contact-chips{flex-direction:column;gap:8px;}
+  .cchip{font-size:.68rem;}
+  .hours-row{padding:9px 0;}
+  .hr-day{font-size:.78rem;}
+
+  /* Reservation */
+  #reservation{padding:56px 20px;}
+  #reservation h2{font-size:1.8rem;}
+  .res-btns{flex-direction:column;align-items:center;gap:10px;}
+
+  /* Footer */
+  footer{gap:12px;}
+  .footer-links{justify-content:center;gap:16px;}
 }
-@media(max-width:500px){
-  .dish-grid{grid-template-columns:1fr;}
+
+/* ── Small phone ≤ 400px ── */
+@media(max-width:400px){
+  .hero-title{font-size:2.1rem;}
+  .gallery-grid{grid-template-columns:1fr;}
+  .stat-num{font-size:1.6rem;}
+  .about-quote{font-size:1.3rem;}
+  .menu-panels{padding:20px 12px 0;}
 }
 </style>
 </head>
@@ -242,6 +339,9 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
     <li><a href="#reservation">Kontakt</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reservieren</button>
+  <button class="nav-ham" id="navHam" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ═══ HERO ════════════════════════════════════════════════════ -->
@@ -764,6 +864,20 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
 /* Nav scroll */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+/* Hamburger */
+const ham = document.getElementById('navHam');
+const navLinks = document.querySelector('.nav-links');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
 
 /* Reveal */
 const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});

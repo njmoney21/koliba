@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Preview — Bistro Koliba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?
+  family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&
+  family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&
+  family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&
+  family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&
+  family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Figtree:wght@300;400;500;600&
+  family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Karla:wght@300;400;500;600&
+  family=Abril+Fatface&family=Lato:wght@300;400;700&
+  family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&
+  family=Tenor+Sans&family=Nunito+Sans:wght@300;400;600&
+  family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Mulish:wght@300;400;600
+  &display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:#080808;color:#e8e8e8;padding:40px 24px;}
+h1{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:48px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;}
+.card{background:#0d0d0d;border:1px solid #1c1c1c;padding:36px 32px;cursor:pointer;transition:border-color .3s;position:relative;}
+.card:hover{border-color:#D4A017;}
+.card-num{position:absolute;top:16px;right:20px;font-size:.58rem;color:#2e2e2e;letter-spacing:.2em;font-family:'DM Sans',sans-serif;}
+.card-tag{font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:#D4A017;margin-bottom:16px;font-family:'DM Sans',sans-serif;font-weight:500;}
+.card-title{line-height:.95;margin-bottom:10px;}
+.card-italic{display:block;margin-top:4px;}
+.card-tagline{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:14px 0 18px;}
+.card-body{font-size:.85rem;line-height:1.75;color:#666;font-weight:300;margin-bottom:18px;}
+.card-btn{display:inline-block;border:1px solid rgba(255,255,255,.2);padding:10px 24px;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.card-fonts{margin-top:18px;padding-top:14px;border-top:1px solid #1c1c1c;display:flex;gap:16px;font-family:'DM Sans',sans-serif;}
+.cf-item{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#333;}
+.cf-item span{color:#555;display:block;margin-top:2px;}
+
+/* ── 1. Cormorant Garamond + Jost ── */
+.f1 .card-title{font-family:'Cormorant Garamond',serif;font-size:3.6rem;font-weight:700;color:#fff;}
+.f1 .card-italic{font-family:'Cormorant Garamond',serif;color:#D4A017;font-style:italic;}
+.f1 .card-tagline,.f1 .card-body,.f1 .card-btn{font-family:'Jost',sans-serif;}
+
+/* ── 2. Cinzel + Raleway ── */
+.f2 .card-title{font-family:'Cinzel',serif;font-size:2.6rem;font-weight:900;color:#fff;letter-spacing:.08em;}
+.f2 .card-italic{font-family:'Cinzel',serif;color:#D4A017;font-weight:400;}
+.f2 .card-tagline,.f2 .card-body,.f2 .card-btn{font-family:'Raleway',sans-serif;}
+
+/* ── 3. DM Serif Display + DM Sans ── */
+.f3 .card-title{font-family:'DM Serif Display',serif;font-size:3.8rem;color:#fff;}
+.f3 .card-italic{font-family:'DM Serif Display',serif;color:#D4A017;font-style:italic;}
+.f3 .card-tagline,.f3 .card-body,.f3 .card-btn{font-family:'DM Sans',sans-serif;}
+
+/* ── 4. Bodoni Moda + Outfit ── */
+.f4 .card-title{font-family:'Bodoni Moda',serif;font-size:3.4rem;font-weight:900;color:#fff;}
+.f4 .card-italic{font-family:'Bodoni Moda',serif;color:#D4A017;font-style:italic;}
+.f4 .card-tagline,.f4 .card-body,.f4 .card-btn{font-family:'Outfit',sans-serif;}
+
+/* ── 5. Fraunces + Figtree ── */
+.f5 .card-title{font-family:'Fraunces',serif;font-size:3.6rem;font-weight:900;color:#fff;}
+.f5 .card-italic{font-family:'Fraunces',serif;color:#D4A017;font-style:italic;}
+.f5 .card-tagline,.f5 .card-body,.f5 .card-btn{font-family:'Figtree',sans-serif;}
+
+/* ── 6. EB Garamond + Karla ── */
+.f6 .card-title{font-family:'EB Garamond',serif;font-size:4rem;font-weight:700;color:#fff;}
+.f6 .card-italic{font-family:'EB Garamond',serif;color:#D4A017;font-style:italic;}
+.f6 .card-tagline,.f6 .card-body,.f6 .card-btn{font-family:'Karla',sans-serif;}
+
+/* ── 7. Abril Fatface + Lato ── */
+.f7 .card-title{font-family:'Abril Fatface',serif;font-size:3.2rem;color:#fff;}
+.f7 .card-italic{font-family:'Abril Fatface',serif;color:#D4A017;}
+.f7 .card-tagline,.f7 .card-body,.f7 .card-btn{font-family:'Lato',sans-serif;}
+
+/* ── 8. Oswald + Source Sans 3 ── */
+.f8 .card-title{font-family:'Oswald',sans-serif;font-size:3.4rem;font-weight:700;color:#fff;letter-spacing:.04em;}
+.f8 .card-italic{font-family:'Oswald',sans-serif;color:#D4A017;font-weight:400;}
+.f8 .card-tagline,.f8 .card-body,.f8 .card-btn{font-family:'Source Sans 3',sans-serif;}
+
+/* ── 9. Tenor Sans + Nunito Sans ── */
+.f9 .card-title{font-family:'Tenor Sans',sans-serif;font-size:3rem;color:#fff;letter-spacing:.06em;}
+.f9 .card-italic{font-family:'Tenor Sans',sans-serif;color:#D4A017;}
+.f9 .card-tagline,.f9 .card-body,.f9 .card-btn{font-family:'Nunito Sans',sans-serif;}
+
+/* ── 10. Libre Baskerville + Mulish ── */
+.f10 .card-title{font-family:'Libre Baskerville',serif;font-size:2.8rem;font-weight:700;color:#fff;}
+.f10 .card-italic{font-family:'Libre Baskerville',serif;color:#D4A017;font-style:italic;}
+.f10 .card-tagline,.f10 .card-body,.f10 .card-btn{font-family:'Mulish',sans-serif;}
+</style>
+</head>
+<body>
+
+<h1>Font Ideas — Bistro Koliba</h1>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card f1">
+    <div class="card-num">01</div>
+    <div class="card-tag">Elegant · High Fashion</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Cormorant Garamond</span></div>
+      <div class="cf-item">Body <span>Jost</span></div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card f2">
+    <div class="card-num">02</div>
+    <div class="card-tag">Roman · Dramatic · Powerful</div>
+    <div class="card-title">BISTRO<span class="card-italic">KOLIBA</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Cinzel</span></div>
+      <div class="cf-item">Body <span>Raleway</span></div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card f3">
+    <div class="card-num">03</div>
+    <div class="card-tag">Modern Editorial · Clean</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>DM Serif Display</span></div>
+      <div class="cf-item">Body <span>DM Sans</span></div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card f4">
+    <div class="card-num">04</div>
+    <div class="card-tag">Luxury · Bold Contrast</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Bodoni Moda</span></div>
+      <div class="cf-item">Body <span>Outfit</span></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card f5">
+    <div class="card-num">05</div>
+    <div class="card-tag">Warm · Bistro Character</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Fraunces</span></div>
+      <div class="cf-item">Body <span>Figtree</span></div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card f6">
+    <div class="card-num">06</div>
+    <div class="card-tag">Old-World · Literary · Warm</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>EB Garamond</span></div>
+      <div class="cf-item">Body <span>Karla</span></div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card f7">
+    <div class="card-num">07</div>
+    <div class="card-tag">Bold · Impactful · Retro</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Abril Fatface</span></div>
+      <div class="cf-item">Body <span>Lato</span></div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card f8">
+    <div class="card-num">08</div>
+    <div class="card-tag">Strong · Condensed · Urban</div>
+    <div class="card-title">BISTRO<span class="card-italic">KOLIBA</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Oswald</span></div>
+      <div class="cf-item">Body <span>Source Sans 3</span></div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card f9">
+    <div class="card-num">09</div>
+    <div class="card-tag">Minimalist · Refined · Airy</div>
+    <div class="card-title">BISTRO<span class="card-italic">KOLIBA</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Tenor Sans</span></div>
+      <div class="cf-item">Body <span>Nunito Sans</span></div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card f10">
+    <div class="card-num">10</div>
+    <div class="card-tag">Classic · Trustworthy · Sharp</div>
+    <div class="card-title">BISTRO<span class="card-italic">Koliba</span></div>
+    <div class="card-tagline">Echter Geschmack · Echtes Feuer</div>
+    <p class="card-body">Vom Balkan nach Bayern — täglich frische Gerichte nach Familienrezepten.</p>
+    <div class="card-btn">Tisch reservieren</div>
+    <div class="card-fonts">
+      <div class="cf-item">Heading <span>Libre Baskerville</span></div>
+      <div class="cf-item">Body <span>Mulish</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

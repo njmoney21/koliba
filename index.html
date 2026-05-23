@@ -231,6 +231,27 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
 .modal-box ul{font-size:.82rem;color:#999;line-height:1.9;padding-left:18px;margin-bottom:8px;}
 .modal-placeholder{color:#555;font-style:italic;}
 
+/* ── PRINT-MENU (2-col layout) ── */
+.menu-print{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);background:var(--dark3);}
+.menu-print-col{padding:44px 40px;}
+.menu-print-col+.menu-print-col{border-left:1px solid var(--border);}
+.mp-col-tag{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.07);text-align:right;margin-bottom:32px;}
+.mp-section{margin-bottom:38px;}
+.mp-section:last-child{margin-bottom:0;}
+.mp-hdr{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+.mp-icon{width:14px;height:14px;flex-shrink:0;color:var(--fire);}
+.mp-hdr-label{font-family:'Inter',sans-serif;font-size:.57rem;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--fire);}
+.mp-rule{height:1px;background:linear-gradient(90deg,rgba(212,160,23,.35) 0%,transparent 80%);margin-bottom:12px;}
+.mp-row{display:flex;align-items:baseline;gap:5px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.mp-row:last-child{border-bottom:none;}
+.mp-name{font-family:'Inter',sans-serif;font-size:.81rem;font-weight:400;color:rgba(255,255,255,.78);line-height:1.3;flex:1;}
+.mp-name sup{font-size:.48rem;color:var(--dim);}
+.mp-vol{font-size:.63rem;color:var(--dim);margin-left:4px;}
+.mp-dots{flex:1;max-width:48px;border-bottom:1px dotted rgba(255,255,255,.1);margin-bottom:3px;flex-shrink:0;}
+.mp-price{font-family:'Inter',sans-serif;font-size:.81rem;font-weight:600;color:var(--fire);white-space:nowrap;}
+/* override old menu-panels */
+.menu-panels{max-width:1200px;margin:0 auto;padding:36px 32px;}
+
 /* ── RESPONSIVE ──────────────────── */
 
 /* Hamburger (hidden on desktop) */
@@ -262,7 +283,11 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
   .menu-cat-nav{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;padding:0 16px;}
   .menu-cat-nav::-webkit-scrollbar{display:none;}
   .mcat{padding:12px 14px;font-size:.58rem;white-space:nowrap;}
-  .menu-panels{padding:28px 16px 0;}
+  .menu-panels{padding:24px 16px;}
+  .menu-print{grid-template-columns:1fr;}
+  .menu-print-col{padding:28px 20px;}
+  .menu-print-col+.menu-print-col{border-left:none;border-top:1px solid var(--border);}
+  .mp-col-tag{text-align:left;}
 
   #info{grid-template-columns:1fr;}
   .info-left{border-right:none;border-bottom:1px solid var(--border);padding:44px 28px;}
@@ -458,390 +483,308 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
 <section id="menu">
   <div class="menu-header">
     <span class="eyebrow reveal">— Speisekarte —</span>
-    <h2 class="reveal rd1">Unsere Gerichte & Getränke</h2>
+    <h2 class="reveal rd1">Unsere Speisekarte</h2>
     <p class="reveal rd2">Hausgemacht, frisch, vom Grill. Täglich zubereitet.</p>
   </div>
 
   <nav class="menu-cat-nav reveal">
-    <button class="mcat active" data-tab="rind">Rind</button>
-    <button class="mcat" data-tab="schwein">Schwein</button>
-    <button class="mcat" data-tab="haehnchen">Hähnchen</button>
-    <button class="mcat" data-tab="fisch">Fisch</button>
-    <button class="mcat" data-tab="grillteller">Grillteller</button>
-    <button class="mcat" data-tab="grillplatte">Grillplatte</button>
-    <button class="mcat" data-tab="kinder">Kinder</button>
-    <button class="mcat" data-tab="salate">Salate</button>
-    <button class="mcat" data-tab="beilagen">Beilagen</button>
-    <button class="mcat" data-tab="nachtisch">Nachtisch</button>
+    <button class="mcat active" data-tab="speisen">Speisen</button>
     <button class="mcat" data-tab="getraenke">Getränke</button>
   </nav>
 
   <div class="menu-panels">
 
-    <!-- ── RIND ── -->
-    <div class="mpanel active" id="tab-rind">
-      <h3 class="msection-title">Gerichte vom Rind</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Ćevapčići <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span><span class="dli-badge">Klassiker</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch nach eigener Rezeptur · hausgemachtes Lepina · Zwiebel · Sauerrahm</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gefüllte Pljeskavica „Gurmanska" <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 17,90</span><span class="dli-badge">Beliebt</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischtes Hackfleisch · Käsefüllung · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Hamburger Klassik mit Pommes <sup>1,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 12,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Brioche-Bun · Salat · Tomate · Zwiebel · Ketchup · Pommes</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Cheeseburger mit Pommes <sup>1,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,50</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Cheddar · Brioche-Bun · Salat · Tomate · Zwiebel · Pommes</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Chillyburger mit Bacon, Käse und Pommes <sup>1,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch-Patty · Bacon · Cheddar · Chili · Jalapeños · Brioche-Bun · Pommes</div></div></div></div>
-        </div>
-      </div>
-    </div>
+    <!-- ══ SPEISEN PANEL ══════════════════════════════════════════ -->
+    <div class="mpanel active" id="tab-speisen">
+      <div class="menu-print">
 
-    <!-- ── SCHWEIN ── -->
-    <div class="mpanel" id="tab-schwein">
-      <h3 class="msection-title">Gerichte vom Schwein</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Pljeskavica „Gurmanska" <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 17,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischtes Hackfleisch · Käse · Schinken · Peka Kartoffeln · Reis</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gegrillter Halsgrat <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinenacken vom Holzkohlegrill · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Fleischspieß vom Grill <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinefleisch vom Spieß · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Teufelsschnitzel (leicht scharf) <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweineschnitzel · Gemüsesoße (leicht scharf) · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Panierte Schweinelende <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinelende · Käse · Schinken · Peka Kartoffeln · Tartar Dipp</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Gerollte Schweinelende vom Grill <span class="dli-badge">NEU</span> <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 19,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinelende · Bacon · Käse · Peka Kartoffeln · Salat</div></div></div></div>
-        </div>
-      </div>
-    </div>
+        <!-- Left col: Rind · Schwein · Hähnchen · Fisch -->
+        <div class="menu-print-col">
+          <div class="mp-col-tag">SPEISEN</div>
 
-    <!-- ── HÄHNCHEN ── -->
-    <div class="mpanel" id="tab-haehnchen">
-      <h3 class="msection-title">Gerichte vom Hähnchenfleisch</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Gegrillte Hähnchenkeule ohne Knochen <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenkeule vom Holzkohlegrill · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Gerollter Hähnchenspieß <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span><span class="dli-badge">Beliebt</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenfleisch · Speck · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Hähnchenbrustfilet in Knoblauchsauce <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenbrustfilet · hausgemachte Knoblauchsauce · Duvečreis</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Gegrilltes Hähnchenbrustfilet <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 15,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hähnchenbrustfilet · gegrilltes Saisongemüse · Peka Kartoffeln</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s-5 5.5-5 10a5 5 0 0 0 10 0c0-4.5-5-10-5-10z"/></svg>
+              <span class="mp-hdr-label">Rind</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Ćevapčići<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 14,90</span></div>
+            <div class="mp-row"><span class="mp-name">Gefüllte Pljeskavica „Gurmanska"<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 17,90</span></div>
+            <div class="mp-row"><span class="mp-name">Hamburger Klassik mit Pommes<sup>1,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 12,90</span></div>
+            <div class="mp-row"><span class="mp-name">Cheeseburger mit Pommes<sup>1,6,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 13,50</span></div>
+            <div class="mp-row"><span class="mp-name">Chillyburger mit Bacon &amp; Käse, Pommes<sup>1,6,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 13,90</span></div>
+          </div>
 
-    <!-- ── FISCH ── -->
-    <div class="mpanel" id="tab-fisch">
-      <h3 class="msection-title">Fisch</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Zanderfilet mit Kartoffelsalat + Fladenbrot <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 19,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Zanderfilet · Kartoffelsalat · hausgemachtes Fladenbrot</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Wallerfilet mit Kartoffelsalat <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Wallerfilet · Kartoffelsalat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Tintenfisch vom Grill mit Salzkartoffeln und Spinat</span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Tintenfisch vom Holzkohlegrill · Salzkartoffeln · Spinat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Fischteller für 1 Person <sup>1,3,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 31,00</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Lachs · Zander · Tintenfische · Garnelen · hausgemachtes Fladenbrot</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Fischteller für 2 Personen <sup>1,3,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 62,00</span><span class="dli-badge">Für 2 Pers.</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Lachs · Zander · Tintenfische · Garnelen · hausgemachtes Fladenbrot</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Vegetarischer Kolibateller</span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gegrilltes Saisongemüse · Duvečreis · Peka Kartoffeln · Salat</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s-5 5.5-5 10a5 5 0 0 0 10 0c0-4.5-5-10-5-10z"/></svg>
+              <span class="mp-hdr-label">Schwein</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Pljeskavica „Gurmanska"<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 17,90</span></div>
+            <div class="mp-row"><span class="mp-name">Gegrillter Halsgrat<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+            <div class="mp-row"><span class="mp-name">Fleischspieß vom Grill<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+            <div class="mp-row"><span class="mp-name">Teufelsschnitzel (leicht scharf)<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+            <div class="mp-row"><span class="mp-name">Panierte Schweinelende<sup>1,3,6,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 18,90</span></div>
+            <div class="mp-row"><span class="mp-name">Gerollte Schweinelende vom Grill<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 19,90</span></div>
+          </div>
 
-    <!-- ── GRILLTELLER ── -->
-    <div class="mpanel" id="tab-grillteller">
-      <h3 class="msection-title">Grillteller</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Mixteller <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">3 Ćevapčići · Halsgrat · Hähnchenkeule · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Bauernteller <sup>1,3,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 18,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">3 Ćevapčići · Fleischspießchen · gegrilltes Würstchen · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Kolibateller <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 20,40</span><span class="dli-badge">Chef's Pick</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">2 Ćevapčići · Hähnchenspieß · Pljeskavica „Gurmanska" · Hähnchenkeule · Peka Kartoffeln · Reis · Salat</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s-5 5.5-5 10a5 5 0 0 0 10 0c0-4.5-5-10-5-10z"/></svg>
+              <span class="mp-hdr-label">Hähnchen</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Gegrillte Hähnchenkeule ohne Knochen<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 14,90</span></div>
+            <div class="mp-row"><span class="mp-name">Gerollter Hähnchenspieß<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+            <div class="mp-row"><span class="mp-name">Hähnchenbrustfilet in Knoblauchsauce<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+            <div class="mp-row"><span class="mp-name">Gegrilltes Hähnchenbrustfilet<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 15,90</span></div>
+          </div>
 
-    <!-- ── GRILLPLATTE ── -->
-    <div class="mpanel" id="tab-grillplatte">
-      <h3 class="msection-title">Grillplatte</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kolibaplatte für 2 Personen <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 40,00</span><span class="dli-badge">Für 2 Pers.</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">4 Ćevapčići · 2 Halsgrat · 2 Würstchen · 2 Pljeskavica · 2 Hähnchenspieße · Kartoffeln · Reis · Salat · Fladenbrot</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kolibaplatte für 3 Personen <sup>1,3,6,7,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 60,00</span><span class="dli-badge">Für 3 Pers.</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">6 Ćevapčići · 3 Halsgrat · 3 Würstchen · 3 Pljeskavica · 3 Hähnchenspieße · Kartoffeln · Reis · Salat · Fladenbrot</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-5 9-7 14-5l3-3v6l-3-3c1 2.5 1 5.5 0 7-5 2.5-12 0-14-5z"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+              <span class="mp-hdr-label">Fisch</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Zanderfilet mit Kartoffelsalat + Fladenbrot<sup>3</sup></span><span class="mp-dots"></span><span class="mp-price">€ 19,90</span></div>
+            <div class="mp-row"><span class="mp-name">Wallerfilet mit Kartoffelsalat<sup>3</sup></span><span class="mp-dots"></span><span class="mp-price">€ 18,90</span></div>
+            <div class="mp-row"><span class="mp-name">Tintenfisch vom Grill mit Salzkartoffeln</span><span class="mp-dots"></span><span class="mp-price">€ 18,90</span></div>
+            <div class="mp-row"><span class="mp-name">Fischteller für 1 Person<sup>1,3,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 31,00</span></div>
+            <div class="mp-row"><span class="mp-name">Fischteller für 2 Personen<sup>1,3,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 62,00</span></div>
+            <div class="mp-row"><span class="mp-name">Vegetarischer Kolibateller</span><span class="mp-dots"></span><span class="mp-price">€ 14,90</span></div>
+          </div>
+        </div><!-- /food left col -->
 
-    <!-- ── KINDER ── -->
-    <div class="mpanel" id="tab-kinder">
-      <h3 class="msection-title">Für unsere kleinen Gäste</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kinder Ćevapčići <sup>1,3,6,7</sup></span><span class="dli-dots"></span><span class="dli-price">€ 7,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Rindfleisch nach eigener Rezeptur · Lepina · Ajvar</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kinder Pljeskavica <sup>1,3,6,7,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hackfleisch · Peka Kartoffeln · Ajvar</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Fleischspießchen <sup>1,3,7,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Schweinefleisch vom Spieß · Peka Kartoffeln · Ajvar</div></div></div></div>
-        </div>
-      </div>
-    </div>
+        <!-- Right col: Grillteller · Grillplatte · Kinder · Salate · Beilagen · Nachtisch -->
+        <div class="menu-print-col">
+          <div class="mp-col-tag">SPEISEN</div>
 
-    <!-- ── SALATE ── -->
-    <div class="mpanel" id="tab-salate">
-      <h3 class="msection-title">Salat</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kleiner gemischter Salat</span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischte Salatblätter · Tomaten · Gurke · Zwiebel · Dressing</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Großer Salat mit Hähnchenstreifen <sup>3</sup></span><span class="dli-dots"></span><span class="dli-price">€ 14,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Gemischter Salat · gegrillte Hähnchenstreifen · Tomaten · Gurke · Dressing</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Thunfisch Salat <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 13,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Thunfisch · Oliven · Schafskäse · gemischte Salatblätter</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">4</span><span class="dli-name">„Šopska" Salat <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 7,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Tomaten · Paprika · Gurke · Zwiebel · Kuhkäse</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/><line x1="7" y1="9" x2="7" y2="15"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="17" y1="9" x2="17" y2="15"/><line x1="5" y1="4" x2="5" y2="9"/><line x1="12" y1="4" x2="12" y2="9"/><line x1="19" y1="4" x2="19" y2="9"/><line x1="5" y1="15" x2="5" y2="20"/><line x1="12" y1="15" x2="12" y2="20"/><line x1="19" y1="15" x2="19" y2="20"/></svg>
+              <span class="mp-hdr-label">Grillteller</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Mixteller<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 18,90</span></div>
+            <div class="mp-row"><span class="mp-name">Bauernteller<sup>1,3,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 18,90</span></div>
+            <div class="mp-row"><span class="mp-name">Kolibateller<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 20,40</span></div>
+          </div>
 
-    <!-- ── BEILAGEN ── -->
-    <div class="mpanel" id="tab-beilagen">
-      <h3 class="msection-title">Beilagen</h3>
-      <div class="dish-grid">
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Peka Kartoffeln</span><span class="dli-dots"></span><span class="dli-price">€ 4,00</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Pommes</span><span class="dli-dots"></span><span class="dli-price">€ 3,50</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Gegrilltes Gemüse</span><span class="dli-dots"></span><span class="dli-price">€ 4,90</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Portion Ajvar</span><span class="dli-dots"></span><span class="dli-price">€ 1,00</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Portion Sauerrahm <sup>6</sup></span><span class="dli-dots"></span><span class="dli-price">€ 1,00</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Extra Brot <sup>1,6,9</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,00</span></div></div>
-        <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Duvec Reis</span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div></div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/><line x1="7" y1="9" x2="7" y2="15"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="17" y1="9" x2="17" y2="15"/><line x1="5" y1="4" x2="5" y2="9"/><line x1="12" y1="4" x2="12" y2="9"/><line x1="19" y1="4" x2="19" y2="9"/><line x1="5" y1="15" x2="5" y2="20"/><line x1="12" y1="15" x2="12" y2="20"/><line x1="19" y1="15" x2="19" y2="20"/></svg>
+              <span class="mp-hdr-label">Grillplatte</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Kolibaplatte für 2 Personen<sup>1,3,6,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 40,00</span></div>
+            <div class="mp-row"><span class="mp-name">Kolibaplatte für 3 Personen<sup>1,3,6,7,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 60,00</span></div>
+          </div>
 
-    <!-- ── NACHTISCH ── -->
-    <div class="mpanel" id="tab-nachtisch">
-      <h3 class="msection-title">Nachtisch</h3>
-      <div class="dish-grid">
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">1</span><span class="dli-name">2 Pfannkuchen mit Nutella und Vanilleeis <sup>1,6,9,14</sup></span><span class="dli-dots"></span><span class="dli-price">€ 8,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Hausgemachte Pfannkuchen · Nutella · Vanilleeis</div></div></div></div>
-        </div>
-        <div class="dish-card">
-          <div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Kugel Eis <sup>6,11</sup></span><span class="dli-dots"></span><span class="dli-price">€ 1,90</span></div>
-          <div class="dish-ingredients"><div><div class="di-inner"><div class="di-label">Zutaten</div><div class="di-text">Vanille · Schoko · Erdbeere</div></div></div></div>
-        </div>
-      </div>
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="mp-hdr-label">Für Kinder</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Kinder Ćevapčići<sup>1,3,6,7</sup></span><span class="mp-dots"></span><span class="mp-price">€ 7,90</span></div>
+            <div class="mp-row"><span class="mp-name">Kinder Pljeskavica<sup>1,3,6,7,11</sup></span><span class="mp-dots"></span><span class="mp-price">€ 8,90</span></div>
+            <div class="mp-row"><span class="mp-name">Fleischspießchen<sup>1,3,7,11</sup></span><span class="mp-dots"></span><span class="mp-price">€ 8,90</span></div>
+          </div>
 
-    <!-- ── GETRÄNKE ── -->
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 2c0 0-14 3-14 13 0 4 3 6 3 6s.5-7 11-9c0 0-10 5-10 12"/></svg>
+              <span class="mp-hdr-label">Salate</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Kleiner gemischter Salat</span><span class="mp-dots"></span><span class="mp-price">€ 4,50</span></div>
+            <div class="mp-row"><span class="mp-name">Großer Salat mit Hähnchenstreifen<sup>3</sup></span><span class="mp-dots"></span><span class="mp-price">€ 14,90</span></div>
+            <div class="mp-row"><span class="mp-name">Thunfisch Salat<sup>6</sup></span><span class="mp-dots"></span><span class="mp-price">€ 13,90</span></div>
+            <div class="mp-row"><span class="mp-name">„Šopska" Salat<sup>6</sup></span><span class="mp-dots"></span><span class="mp-price">€ 7,90</span></div>
+          </div>
+
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span class="mp-hdr-label">Beilagen</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Peka Kartoffeln</span><span class="mp-dots"></span><span class="mp-price">€ 4,00</span></div>
+            <div class="mp-row"><span class="mp-name">Pommes</span><span class="mp-dots"></span><span class="mp-price">€ 3,50</span></div>
+            <div class="mp-row"><span class="mp-name">Gegrilltes Gemüse</span><span class="mp-dots"></span><span class="mp-price">€ 4,90</span></div>
+            <div class="mp-row"><span class="mp-name">Portion Ajvar</span><span class="mp-dots"></span><span class="mp-price">€ 1,00</span></div>
+            <div class="mp-row"><span class="mp-name">Portion Sauerrahm<sup>6</sup></span><span class="mp-dots"></span><span class="mp-price">€ 1,00</span></div>
+            <div class="mp-row"><span class="mp-name">Extra Brot<sup>1,6,9</sup></span><span class="mp-dots"></span><span class="mp-price">€ 2,00</span></div>
+            <div class="mp-row"><span class="mp-name">Duvec Reis</span><span class="mp-dots"></span><span class="mp-price">€ 4,50</span></div>
+          </div>
+
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2.5 3.5-3.5 6.5-3.5 9a3.5 3.5 0 0 0 7 0c0-2.5-1-5.5-3.5-9z"/><line x1="12" y1="14.5" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
+              <span class="mp-hdr-label">Nachtisch</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">2 Pfannkuchen mit Nutella &amp; Vanilleeis<sup>1,6,9,14</sup></span><span class="mp-dots"></span><span class="mp-price">€ 8,90</span></div>
+            <div class="mp-row"><span class="mp-name">Kugel Eis<sup>6,11</sup></span><span class="mp-dots"></span><span class="mp-price">€ 1,90</span></div>
+          </div>
+        </div><!-- /food right col -->
+      </div><!-- /menu-print -->
+
+      <div class="allergen-note" style="margin-top:32px;">
+        <strong>Hinweis auf Zusatzstoffe</strong>
+        1 Weizenmehl · 2 Gerste · 3 Geschmacksverstärker · 4 Schwefelsäure und Sulfite · 5 Sellerie · 6 Milch · 7 Sesamsamen · 8 Farbstoff · 9 Eier · 10 Koffeinhaltig · 11 Süßmittel · 12 Phenylalaninquelle · 13 Konservierungsstoffe · 14 Schalenobst (Nüsse)
+      </div>
+    </div><!-- /speisen panel -->
+
+    <!-- ══ GETRÄNKE PANEL ═════════════════════════════════════════ -->
     <div class="mpanel" id="tab-getraenke">
-      <h3 class="msection-title">Getränkekarte</h3>
+      <div class="menu-print">
 
-      <!-- Sub-tabs -->
-      <div class="drinks-subtabs">
-        <button class="dstab active" data-ds="biere">Biere</button>
-        <button class="dstab" data-ds="soft">Soft Drinks</button>
-        <button class="dstab" data-ds="saefte">Säfte</button>
-        <button class="dstab" data-ds="schorlen">Schorlen</button>
-        <button class="dstab" data-ds="weisswein">Weißwein</button>
-        <button class="dstab" data-ds="rotwein">Rotwein</button>
-        <button class="dstab" data-ds="cocktails">Cocktails</button>
-        <button class="dstab" data-ds="spirituosen">Spirituosen</button>
-        <button class="dstab" data-ds="kaffee">Heiße Getränke</button>
-      </div>
+        <!-- Left col: Biere · Soft Drinks · Säfte · Schorlen -->
+        <div class="menu-print-col">
+          <div class="mp-col-tag">GETRÄNKE</div>
 
-      <!-- Biere -->
-      <div class="dspanel active" id="ds-biere">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Biere aus Weihenstephan</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Hefeweißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Leichtes Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Alkoholfreies Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Dunkles Weißbier <sup>1,2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Original Helles <sup>2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,70</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Original Radler <sup>2</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Pils <sup>2</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h11l-1.5 14H7.5L6 5z"/><path d="M17 7.5h2a2 2 0 0 1 0 5h-2"/></svg>
+              <span class="mp-hdr-label">Biere aus Weihenstephan</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Hefeweißbier<sup>1,2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,90</span></div>
+            <div class="mp-row"><span class="mp-name">Leichtes Weißbier<sup>1,2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,90</span></div>
+            <div class="mp-row"><span class="mp-name">Alkoholfreies Weißbier<sup>1,2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,90</span></div>
+            <div class="mp-row"><span class="mp-name">Dunkles Weißbier<sup>1,2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,90</span></div>
+            <div class="mp-row"><span class="mp-name">Original Helles<sup>2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,70</span></div>
+            <div class="mp-row"><span class="mp-name">Original Radler<sup>2</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,80</span></div>
+            <div class="mp-row"><span class="mp-name">Pils<sup>2</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,20</span></div>
+          </div>
 
-      <!-- Soft Drinks -->
-      <div class="dspanel" id="ds-soft">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Soft Getränke</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Coca Cola <sup>8,10,13</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Coca Cola <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Cola Zero <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Cola Light <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Cockta <sup>8,11,13</sup><span class="dli-vol">0,275 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Fanta <sup>8,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">7</span><span class="dli-name">Sprite <sup>11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">8</span><span class="dli-name">Zitronenlimonade <sup>11,13</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,10</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">9</span><span class="dli-name">Mezzo Mix <sup>8,10,11,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">10</span><span class="dli-name">Lift <sup>11,12,13</sup><span class="dli-vol">0,33 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">11</span><span class="dli-name">Wasser Apollinaris<span class="dli-vol">0,25 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">12</span><span class="dli-name">Wasser Apollinaris<span class="dli-vol">0,75 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">13</span><span class="dli-name">Wasser Vio<span class="dli-vol">0,25 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">14</span><span class="dli-name">Wasser Vio<span class="dli-vol">0,75 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,80</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+              <span class="mp-hdr-label">Soft Drinks</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Coca Cola<sup>8,10,13</sup><span class="mp-vol">0,2 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,80</span></div>
+            <div class="mp-row"><span class="mp-name">Coca Cola<sup>8,10,11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Cola Zero<sup>8,10,11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Cola Light<sup>8,10,11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,80</span></div>
+            <div class="mp-row"><span class="mp-name">Cockta<sup>8,11,13</sup><span class="mp-vol">0,275 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,20</span></div>
+            <div class="mp-row"><span class="mp-name">Fanta<sup>8,11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Sprite<sup>11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Zitronenlimonade<sup>11,13</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,10</span></div>
+            <div class="mp-row"><span class="mp-name">Mezzo Mix<sup>8,10,11,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Lift<sup>11,12,13</sup><span class="mp-vol">0,33 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,80</span></div>
+            <div class="mp-row"><span class="mp-name">Wasser Apollinaris<span class="mp-vol">0,25 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,60</span></div>
+            <div class="mp-row"><span class="mp-name">Wasser Apollinaris<span class="mp-vol">0,75 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 5,80</span></div>
+            <div class="mp-row"><span class="mp-name">Wasser Vio<span class="mp-vol">0,25 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,60</span></div>
+            <div class="mp-row"><span class="mp-name">Wasser Vio<span class="mp-vol">0,75 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 5,80</span></div>
+          </div>
 
-      <!-- Säfte -->
-      <div class="dspanel" id="ds-saefte">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Säfte</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Orangensaft <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Maracujanektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Johannisbeernektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Erdbeernektar <sup>11</sup><span class="dli-vol">0,2 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 3-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-2-6-4-9z"/></svg>
+              <span class="mp-hdr-label">Säfte</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Orangensaft<sup>11</sup><span class="mp-vol">0,2 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Maracujanektar<sup>11</sup><span class="mp-vol">0,2 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Johannisbeernektar<sup>11</sup><span class="mp-vol">0,2 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Erdbeernektar<sup>11</sup><span class="mp-vol">0,2 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,20</span></div>
+          </div>
 
-      <!-- Schorlen -->
-      <div class="dspanel" id="ds-schorlen">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Schorlen</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Maracujaschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Orangensaftschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Johannisbeerschorle <sup>11</sup><span class="dli-vol">0,5 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,60</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M4 13h16M6 7h12l1 6H5l1-6z"/></svg>
+              <span class="mp-hdr-label">Schorlen</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Maracujaschorle<sup>11</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,60</span></div>
+            <div class="mp-row"><span class="mp-name">Orangensaftschorle<sup>11</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,60</span></div>
+            <div class="mp-row"><span class="mp-name">Johannisbeerschorle<sup>11</sup><span class="mp-vol">0,5 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,60</span></div>
+          </div>
+        </div><!-- /drinks left col -->
 
-      <!-- Weißwein -->
-      <div class="dspanel" id="ds-weisswein">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Weißwein</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 9,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Zeneto Lugana DOC <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 28,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Pinot Grigio DOP <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Grüner Veltiner DAC <sup>Österreich</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
-        </div>
-      </div>
+        <!-- Right col: Wein · Cocktails · Spirituosen · Heiße Getränke -->
+        <div class="menu-print-col">
+          <div class="mp-col-tag">GETRÄNKE</div>
 
-      <!-- Rotwein -->
-      <div class="dspanel" id="ds-rotwein">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Rotwein</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 9,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Syrah DOC <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 28,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">1/8 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 3,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">1/4 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Merlot <sup>Italien</sup><span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 19,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">·</span><span class="dli-name">Weinschorle<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,80</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8M12 12v10M5 3h14l-4 9H9L5 3z"/></svg>
+              <span class="mp-hdr-label">Weißwein</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Zeneto Lugana DOC · Italien<span class="mp-vol">1/8 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 5,00</span></div>
+            <div class="mp-row"><span class="mp-name">Zeneto Lugana DOC · Italien<span class="mp-vol">1/4 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 9,80</span></div>
+            <div class="mp-row"><span class="mp-name">Zeneto Lugana DOC · Italien<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 28,00</span></div>
+            <div class="mp-row"><span class="mp-name">Pinot Grigio DOP · Italien<span class="mp-vol">1/8 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,60</span></div>
+            <div class="mp-row"><span class="mp-name">Pinot Grigio DOP · Italien<span class="mp-vol">1/4 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 6,90</span></div>
+            <div class="mp-row"><span class="mp-name">Pinot Grigio DOP · Italien<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 19,00</span></div>
+            <div class="mp-row"><span class="mp-name">Grüner Veltiner DAC · Österreich<span class="mp-vol">1/8 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,60</span></div>
+            <div class="mp-row"><span class="mp-name">Grüner Veltiner DAC · Österreich<span class="mp-vol">1/4 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 6,90</span></div>
+            <div class="mp-row"><span class="mp-name">Grüner Veltiner DAC · Österreich<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 19,00</span></div>
+          </div>
 
-      <!-- Cocktails -->
-      <div class="dspanel" id="ds-cocktails">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Cocktails</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Aperol Spritz<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,90</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Hugo<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 5,50</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Lillet<span class="dli-vol">0,7 l</span></span><span class="dli-dots"></span><span class="dli-price">€ 6,90</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8M12 12v10M5 3h14l-4 9H9L5 3z"/></svg>
+              <span class="mp-hdr-label">Rotwein</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Syrah DOC · Italien<span class="mp-vol">1/8 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 5,00</span></div>
+            <div class="mp-row"><span class="mp-name">Syrah DOC · Italien<span class="mp-vol">1/4 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 9,80</span></div>
+            <div class="mp-row"><span class="mp-name">Syrah DOC · Italien<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 28,00</span></div>
+            <div class="mp-row"><span class="mp-name">Merlot · Italien<span class="mp-vol">1/8 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 3,60</span></div>
+            <div class="mp-row"><span class="mp-name">Merlot · Italien<span class="mp-vol">1/4 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 6,90</span></div>
+            <div class="mp-row"><span class="mp-name">Merlot · Italien<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 19,00</span></div>
+            <div class="mp-row"><span class="mp-name">Weinschorle<span class="mp-vol">0,7 l</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,80</span></div>
+          </div>
 
-      <!-- Spirituosen -->
-      <div class="dspanel" id="ds-spirituosen">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Spirituosen</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Kruškovac<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,50</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Sljivovica<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 2,50</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Jägermeister<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Whisky Jack Daniels<span class="dli-vol">0,2 cl</span></span><span class="dli-dots"></span><span class="dli-price">€ 4,50</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-8 9V20M8 20h8"/></svg>
+              <span class="mp-hdr-label">Cocktails</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Aperol Spritz</span><span class="mp-dots"></span><span class="mp-price">€ 5,90</span></div>
+            <div class="mp-row"><span class="mp-name">Hugo</span><span class="mp-dots"></span><span class="mp-price">€ 5,50</span></div>
+            <div class="mp-row"><span class="mp-name">Lillet</span><span class="mp-dots"></span><span class="mp-price">€ 6,90</span></div>
+          </div>
 
-      <!-- Heiße Getränke -->
-      <div class="dspanel" id="ds-kaffee">
-        <h4 style="color:var(--fire);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:500;">Heiße Getränke</h4>
-        <div class="dish-grid">
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">1</span><span class="dli-name">Franck Espresso <sup>10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,40</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">2</span><span class="dli-name">Franck Espresso Macchiato <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,60</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">3</span><span class="dli-name">Kaffee <sup>10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">4</span><span class="dli-name">Milchkaffee <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 3,00</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">5</span><span class="dli-name">Cappuccino <sup>6,10</sup></span><span class="dli-dots"></span><span class="dli-price">€ 3,20</span></div></div>
-          <div class="dish-card"><div class="dli-row"><span class="dli-num">6</span><span class="dli-name">Tee versch. Sorten</span><span class="dli-dots"></span><span class="dli-price">€ 2,80</span></div></div>
-        </div>
-      </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M8 6c-2 1-4 3.5-4 7v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8c0-3.5-2-6-4-7"/><line x1="8" y1="14" x2="16" y2="14"/></svg>
+              <span class="mp-hdr-label">Spirituosen</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Kruškovac<span class="mp-vol">0,2 cl</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,50</span></div>
+            <div class="mp-row"><span class="mp-name">Sljivovica<span class="mp-vol">0,2 cl</span></span><span class="mp-dots"></span><span class="mp-price">€ 2,50</span></div>
+            <div class="mp-row"><span class="mp-name">Jägermeister<span class="mp-vol">0,2 cl</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,00</span></div>
+            <div class="mp-row"><span class="mp-name">Whisky Jack Daniels<span class="mp-vol">0,2 cl</span></span><span class="mp-dots"></span><span class="mp-price">€ 4,50</span></div>
+          </div>
 
-    </div><!-- /getränke -->
-
-    <!-- Allergen note for food panels -->
-    <div id="allergen-food" class="allergen-note" style="margin-top:32px;">
-      <strong>Hinweis auf Zusatzstoffe</strong>
-      1 Weizenmehl · 2 Gerste · 3 Geschmacksverstärker · 4 Schwefelsäure und Sulfite · 5 Sellerie · 6 Milch · 7 Sesamsamen · 8 Farbstoff · 9 Eier · 10 Koffeinhaltig · 11 Süßmittel · 12 Phenylalaninquelle · 13 Konservierungsstoffe · 14 Schalenobst (Nüsse)
-    </div>
+          <div class="mp-section">
+            <div class="mp-hdr">
+              <svg class="mp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h2a3 3 0 0 1 0 6h-2"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              <span class="mp-hdr-label">Heiße Getränke</span>
+            </div>
+            <div class="mp-rule"></div>
+            <div class="mp-row"><span class="mp-name">Franck Espresso<sup>10</sup></span><span class="mp-dots"></span><span class="mp-price">€ 2,40</span></div>
+            <div class="mp-row"><span class="mp-name">Franck Espresso Macchiato<sup>6,10</sup></span><span class="mp-dots"></span><span class="mp-price">€ 2,60</span></div>
+            <div class="mp-row"><span class="mp-name">Kaffee<sup>10</sup></span><span class="mp-dots"></span><span class="mp-price">€ 2,80</span></div>
+            <div class="mp-row"><span class="mp-name">Milchkaffee<sup>6,10</sup></span><span class="mp-dots"></span><span class="mp-price">€ 3,00</span></div>
+            <div class="mp-row"><span class="mp-name">Cappuccino<sup>6,10</sup></span><span class="mp-dots"></span><span class="mp-price">€ 3,20</span></div>
+            <div class="mp-row"><span class="mp-name">Tee verschiedene Sorten</span><span class="mp-dots"></span><span class="mp-price">€ 2,80</span></div>
+          </div>
+        </div><!-- /drinks right col -->
+      </div><!-- /menu-print -->
+    </div><!-- /getraenke panel -->
 
   </div><!-- /menu-panels -->
 </section>
+
 
 <!-- ═══ RESERVATION ══════════════════════════════════════════════ -->
 <section id="reservation">
@@ -1126,24 +1069,8 @@ document.querySelectorAll('.mcat').forEach(tab => {
     tab.classList.add('active');
     const panel = document.getElementById('tab-' + tab.dataset.tab);
     if(panel) panel.classList.add('active');
-    const foodAllergen = document.getElementById('allergen-food');
-    foodAllergen.style.display = tab.dataset.tab === 'getraenke' ? 'none' : 'block';
   });
 });
-
-/* Drinks sub-tabs */
-document.querySelectorAll('.dstab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.dstab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.dspanel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    const panel = document.getElementById('ds-' + tab.dataset.ds);
-    if(panel) panel.classList.add('active');
-  });
-});
-
-/* Hide food allergen note initially only if drinks tab active */
-document.getElementById('allergen-food').style.display = 'block';
 
 /* Modals */
 function openModal(id) {

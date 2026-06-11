@@ -83,9 +83,12 @@ nav.scrolled{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);-webkit-backd
 
 /* ── GALLERY ─────────────────────── */
 #gallery{background:var(--dark);padding:90px 48px;border-top:1px solid var(--border);}
-.gallery-header{text-align:center;margin-bottom:40px;}
+.gallery-header{text-align:center;}
 .gallery-header .eyebrow{display:block;margin-bottom:12px;}
 .gallery-header h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;letter-spacing:.08em;}
+.gallery-header p{color:rgba(255,255,255,.7);font-size:.95rem;margin:14px 0 28px;}
+.modal-box--wide{max-width:1100px;}
+.modal-box--wide .gallery-grid{margin-top:0;}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:1100px;margin:0 auto;}
 .gallery-cell{overflow:hidden;aspect-ratio:1/1;position:relative;}
 .gallery-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85);transition:filter .5s,transform .5s;}
@@ -460,19 +463,32 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
   <div class="gallery-header">
     <span class="eyebrow reveal">— Impressionen —</span>
     <h2 class="reveal rd1">Unsere Gerichte</h2>
-  </div>
-  <div class="gallery-grid reveal">
-    <div class="gallery-cell"><img src="images/slika1.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika2.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika3.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika4.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika5.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika6.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika7.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika8.jpg" alt="Bistro Koliba"></div>
-    <div class="gallery-cell"><img src="images/slika9.jpg" alt="Bistro Koliba"></div>
+    <p class="reveal rd2">Ein Blick in unsere Küche und auf unsere Teller.</p>
+    <button class="btn-p reveal rd3" onclick="openModal('gallery')">Galerie ansehen</button>
   </div>
 </section>
+
+<!-- ═══ GALLERY MODAL ════════════════════════════════════════════ -->
+<div id="modal-gallery" class="modal-overlay" onclick="if(event.target===this)closeModal('gallery')">
+  <div class="modal-box modal-box--wide">
+    <button class="modal-close" onclick="closeModal('gallery')">×</button>
+    <h2>Unsere Gerichte</h2>
+    <div class="gallery-grid">
+      <div class="gallery-cell"><img src="images/slika1.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika2.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika3.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika4.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika5.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika6.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika7.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika8.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika9.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika10.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika11.jpg" alt="Bistro Koliba"></div>
+      <div class="gallery-cell"><img src="images/slika12.jpg" alt="Bistro Koliba"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ MENU ═════════════════════════════════════════════════════ -->
 <section id="menu">
@@ -1076,7 +1092,7 @@ function closeModal(id) {
   document.getElementById('modal-' + id).classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal('impressum'); closeModal('datenschutz'); } });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal('impressum'); closeModal('datenschutz'); closeModal('gallery'); } });
 
 /* Booking form */
 (function() {

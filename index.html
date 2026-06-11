@@ -87,6 +87,8 @@ nav.scrolled{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);-webkit-backd
 .gallery-header .eyebrow{display:block;margin-bottom:12px;}
 .gallery-header h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;letter-spacing:.08em;}
 .gallery-header p{color:rgba(255,255,255,.7);font-size:.95rem;margin:14px 0 28px;}
+.gallery-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:700px;margin:0 auto 32px;cursor:pointer;}
+.gallery-preview .gallery-cell{border-radius:4px;}
 .modal-box--wide{max-width:1100px;}
 .modal-box--wide .gallery-grid{margin-top:0;}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:1100px;margin:0 auto;}
@@ -464,6 +466,13 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:26px 48
     <span class="eyebrow reveal">— Impressionen —</span>
     <h2 class="reveal rd1">Unsere Gerichte</h2>
     <p class="reveal rd2">Ein Blick in unsere Küche und auf unsere Teller.</p>
+  </div>
+  <div class="gallery-preview reveal rd3" onclick="openModal('gallery')">
+    <div class="gallery-cell"><img src="images/gallery1.png" alt="Calamari mit Reis"></div>
+    <div class="gallery-cell"><img src="images/gallery2.png" alt="Hausgemachte Pasta"></div>
+    <div class="gallery-cell"><img src="images/gallery3.png" alt="Gefüllte Fleischröllchen"></div>
+  </div>
+  <div class="gallery-header">
     <button class="btn-p reveal rd3" onclick="openModal('gallery')">Galerie ansehen</button>
   </div>
 </section>
